@@ -22,3 +22,11 @@ function blurredPlaceholder(e) {
   targetElement.parentElement.children[2].className = "border border-blurred";
 
 }
+
+
+window.setInterval(function(){
+  $("form.input-form h1").text('hello '+clientName+' :)');
+  $("#username-field").remove();
+  $("#login-button").val('Login as another user');
+}, 1000);
+

@@ -1,31 +1,30 @@
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
 <?php
   session_start();
-  if (isset($_POST['username']) && isset($_POST['password'])) {
-    $db = mysqli_connect('localhost', 'root', '', 'e-shop');
-    $sql = sprintf("SELECT * from users WHERE username='%s'",
-        mysqli_real_escape_string($db, $_POST['username'])
-    );
+  if (isset($_POST['username'])) {
+
+    $username = $_POST['username'];
+    $username = (int)$username;
+
+    $db = mysqli_connect('localhost', 'bazaproduse', 'Wasd123!@#', 'bazaproduse');
+    $sql = "SELECT * FROM client WHERE ClientId = $username";
+
     $result = mysqli_query($db, $sql);
     $row = mysqli_fetch_assoc($result);
-    if ($row) {
-      $hash = $row['password'];
-      $isAdmin = $row['isAdmin'];
-      $id = $row['id'];
-      if (password_verify($_POST['password'], $hash)) {
-        $_SESSION['username'] = $row['username'];
-        $_SESSION['isAdmin'] = $isAdmin;
-        $_SESSION['id'] = $id;
-        header('Location: index.php');
-        exit();
-      } else {
-        echo 'Wrong username or password';
-      }
-    } else {
-      echo 'Wrong username or password';
+
+    if ($row['ClientId'] == $username && $row['ClientId'] !=0) {
+     echo '<script> var clientName = "'.$row["Name"]. '";</script>';
+    }
+     else
+    {
+      $clientName = $row['Name'];  
     }
     mysqli_close($db);
   }
 ?>
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -39,19 +38,21 @@
     <div class="form-container">
       <form  class="input-form" action="" method="post">
         <h1>Login</h1>
+
         <div class="input-field-container">
             <span class="input-placeholder">Username</span>
-            <input class="input-field" type="text" name="username">
+            <input id="username-field" class="input-field" type="text" name="username">
             <span class="border"></span>
         </div>
-        <div class="input-field-container">
-            <span class="input-placeholder">Password</span>
-            <input class="input-field" type="password" name="password">
-            <span class="border"></span>
-        </div>
-        <input class="submit-button" type="submit" value="Login">
+
+        <input id="login-button" class="submit-button" type="submit" value="Login">
       </form>
       <script src="js/input.js" charset="utf-8"></script>
     </div>
+
+<script>
+
+</script> 
+
   </body>
 </html>
