@@ -37,7 +37,7 @@
           foreach ($result as $row) {
             $title = $row['Name'];
             $picture = $row['Picture'];
-            $description = $row['Price'];
+            $description = $row['description'];
             $price = $row['Price'];
           }
         ?>
