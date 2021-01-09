@@ -4,7 +4,9 @@ GENERAL
 
 body {
   background-color: #fafafa;
-  margin: 0;
+  background-image: url("https://igniteindy.org/wp-content/uploads/2018/01/food-background-light.jpg");
+  
+ margin: 0;
 }
 
 .container {
