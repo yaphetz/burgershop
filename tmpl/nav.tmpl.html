@@ -1,0 +1,25 @@
+<div class="container" style="display: flex; justify-content: center;">
+<a href="/shop/index.php"> <img src="/shop/img/logo.png" width="300px"> </a> </div>
+
+<div class="container" style="display: flex; justify-content: center;">
+          <?php
+            if (isset($_SESSION['username'])) {
+              echo '<p>Welcome ' . $_SESSION['username'] . ' ';
+              echo '<a href="logout.php">Logout</a></p>';
+            } else {
+              echo '<p>Welcome, please <a href="login.php">Login</a> to see your cart</p>';
+            }
+            if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) {
+              echo ' <p><a href="dashboard">Dashboard</a></p>';
+            }
+          ?>
+		  </div>
+
+<nav class="top-nav">
+  <ul class="categories" style="display: flex; justify-content: center;">
+    <li class="category"><a href="#">Category #1</a></li>
+    <li class="category"><a href="#">Category #2</a></li>
+    <li class="category"><a href="#">Category #3</a></li>
+    <li class="category"><a href="#">Basket</a></li>
+  </ul>
+</nav>
