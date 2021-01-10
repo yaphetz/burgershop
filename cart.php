@@ -8,6 +8,10 @@
 		<style>
 		.top-nav {display:none}
 		.btn { width:100%}
+		.modal a.close-modal {
+    top: 15px;
+	right: 15px;
+		}
 		</style>
 
 <?php
