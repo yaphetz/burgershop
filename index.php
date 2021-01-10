@@ -1,13 +1,4 @@
-<?php
-            $ClientId= '';
-            $Name= '';
-            if (isset($_SESSION['ClientId']) && isset($_SESSION['Name']) )
-            {
-                $ClientId = $_SESSION['ClientId'];
-                $Name = $_SESSION['Name'];
-            }
-  session_start();
-?>
+
 <!DOCTYPE html>
 <html>
   <head>
