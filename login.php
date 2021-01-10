@@ -15,6 +15,8 @@
 
     if ($row['ClientId'] == $username && $row['ClientId'] !=0) {
      echo '<script> var clientName = "'.$row["Name"]. '";</script>';
+     $_SESSION['ClientId'] = $row['ClientId'];
+     $_SESSION['Name'] = $row['Name'];
     }
      else
     {
@@ -51,6 +53,12 @@
     </div>
 
 <script>
+window.setInterval(function(){
+  $("form.input-form h1").text('hello '+clientName+' :)');
+  $("#username-field").replaceWith( "<a href='/shop/'> <button type='button'>Go to homepage</button> </a>" );
+  $("#login-button").val('Login as another user');
+}, 1000);
+
 
 </script> 
 

@@ -1,8 +1,11 @@
 <?php
-  // if (!$isSetup || !isset($isSetup)) {
-  //   header('Location: setup/setup.php');
-  //   exit();
-  // }
+            $ClientId= '';
+            $Name= '';
+            if (isset($_SESSION['ClientId']) && isset($_SESSION['Name']) )
+            {
+                $ClientId = $_SESSION['ClientId'];
+                $Name = $_SESSION['Name'];
+            }
   session_start();
 ?>
 <!DOCTYPE html>
@@ -26,6 +29,7 @@
       <section class="products">
         <ul class="products-list">
           <?php
+ 
             $db = mysqli_connect('localhost', 'bazaproduse', 'Wasd123!@#', 'bazaproduse');
             $sql = 'SELECT * FROM product';
             $result = mysqli_query($db, $sql);
@@ -39,6 +43,7 @@
                       </li>',$row['ProductId'], $row['Name'], $row['Picture'], $row['Price']);
             }
             mysqli_close($db);
+
           ?>
         </ul>
       </section>
